@@ -10,14 +10,14 @@ public class Event {
     private boolean gender;
     private Date startDate;
     private Date endDate;
-    private String metric;
+    private int metric;
     private double minRange;
     private double maxRange;
     private int maxCapacity;
     private int installationID;
     
     public Event(int pEventID, String pName, boolean pMode, boolean pGender, Date pStartDate, Date pEndDate, 
-                 String pMetric, double pMinRange, double pMaxRange, int pMaxCapacity, int pInstallationID)
+                 int pMetric, double pMinRange, double pMaxRange, int pMaxCapacity, int pInstallationID)
     {
         eventID = pEventID;
         name = pName;
@@ -82,12 +82,12 @@ public class Event {
         endDate = pEndDate;
     }
     
-    public String getMetric()
+    public int getMetric()
     {
         return metric;
     }
     
-    public void setMetric(String pMetric)
+    public void setMetric(int pMetric)
     {
         metric = pMetric;
     }

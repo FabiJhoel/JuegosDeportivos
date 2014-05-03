@@ -19,7 +19,52 @@ public class SQLServerEventDAO implements EventDAO{
     @Override
     public int insertEvent() 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = null;
+        PreparedStatement stmt;
+        ResultSet rs;
+        Collection eventList = null;
+        Event eventObj;
+        int inserted = -1;
+        
+        try
+        {  
+           conn = SQLServerDAOFactory.createConnection();
+            stmt = conn.prepareStatement("INSERT INTO Eventos VALUES ()");
+            rs = stmt.executeQuery();
+            
+            inserted = 0;
+            
+            /*while(rs.next()){
+                eventObj = new Event(rs.getInt("id"), rs.getString("nombre"), rs.getBoolean("modalidad"), 
+                                    rs.getBoolean("genero"), rs.getDate("fechaInicio"), rs.getDate("fechaFinal"),
+                                    rs.getString("metrica"), rs.getDouble("rangoMin"), rs.getDouble("rangoMax"),
+                                    rs.getInt("capacidadMax"), rs.getInt("idInstalacion"));
+                                            
+                eventList.add(eventObj);
+            }*/
+        }
+        
+        catch(SQLException e)
+        {
+            System.out.println("Message: " + e.getMessage() + "\n" + "Code: " + e.getErrorCode());
+        }
+        
+        finally
+        {
+            if(conn != null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                
+                catch(SQLException e)
+                {
+                    System.out.println("Message: " + e.getMessage() + "\n" + "Code: " + e.getErrorCode());
+                }
+            }
+        }
+        return 1;
     }
     
     // Return true on success, false on failure or error
@@ -71,7 +116,7 @@ public class SQLServerEventDAO implements EventDAO{
             while(rs.next()){
                 eventObj = new Event(rs.getInt("id"), rs.getString("nombre"), rs.getBoolean("modalidad"), 
                                     rs.getBoolean("genero"), rs.getDate("fechaInicio"), rs.getDate("fechaFinal"),
-                                    rs.getString("metrica"), rs.getDouble("rangoMin"), rs.getDouble("rangoMax"),
+                                    rs.getInt("idMetrica"), rs.getDouble("rangoMin"), rs.getDouble("rangoMax"),
                                     rs.getInt("capacidadMax"), rs.getInt("idInstalacion"));
                                             
                 eventList.add(eventObj);
