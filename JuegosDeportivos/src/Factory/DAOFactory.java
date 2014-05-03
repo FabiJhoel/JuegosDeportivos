@@ -1,13 +1,13 @@
 package Factory;
 
-import ObjectsDAO.EventDAO;
+import ObjectsDAO.ObjectsDAO;
 
 public abstract class DAOFactory {
     
     public static final int SQLSERVER = 1;
     
     //DAO Objects 
-    public abstract EventDAO getEventDAO();
+    public abstract ObjectsDAO getObjectsDAO(enumDAO whichObjectDAO);
     
     public static DAOFactory getDAOFactory(int whichFactory)
     {

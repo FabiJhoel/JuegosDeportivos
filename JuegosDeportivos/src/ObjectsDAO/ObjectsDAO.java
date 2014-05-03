@@ -1,11 +1,20 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package ObjectsDAO;
 
-import Objects.*;
+import Objects.Event;
 import java.util.Collection;
 import javax.sql.RowSet;
 
-public interface EventDAO {
-    
+/**
+ *
+ * @author Martinez
+ */
+public interface ObjectsDAO {
     // Create new event
     public int insertEvent();
     
@@ -23,5 +32,4 @@ public interface EventDAO {
     
     // Select all info from table
     public Collection selectAllEvents();
-    
 }

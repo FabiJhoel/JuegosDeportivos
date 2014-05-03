@@ -316,9 +316,9 @@ public class ClientInterface extends javax.swing.JFrame {
         });
         
         DAOFactory sqlserverFactory = DAOFactory.getDAOFactory(DAOFactory.SQLSERVER);
-        EventDAO perDAO = sqlserverFactory.getEventDAO();
+        ObjectsDAO perDAOEvent = sqlserverFactory.getObjectsDAO(enumDAO.EVENT);
         
-        Collection<Event> personList = perDAO.selectAllEvents();
+        Collection<Event> personList = perDAOEvent.selectAllEvents();
         for(Event p : personList) {
             System.out.println(p.toString());
         }
