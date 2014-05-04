@@ -18,9 +18,10 @@ public class Single extends Competitor{
     private Date dateOfBirth;
     private String occupation;
     private String city;
-    private String age;
+    private int age;
 
-    public Single(String lastName1, String lastName2, Date dateOfBirth, String occupation, String city, String age, int competitorId, String country, String name, boolean gender, String trainer, boolean type, int lodgingId) {
+    public Single(String lastName1, String lastName2, Date dateOfBirth, String occupation, String city, int age, int competitorId,
+            String country, String name, boolean gender, String trainer, boolean type, int lodgingId) {
         super(competitorId, country, name, gender, trainer, type, lodgingId);
         this.lastName1 = lastName1;
         this.lastName2 = lastName2;
@@ -70,11 +71,11 @@ public class Single extends Competitor{
         this.city = city;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
     
