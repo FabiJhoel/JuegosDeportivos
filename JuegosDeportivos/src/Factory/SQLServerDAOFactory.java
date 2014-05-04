@@ -33,16 +33,20 @@ public class SQLServerDAOFactory extends DAOFactory{
     }
     
     @Override
-    public ObjectsDAO getObjectsDAO(enumDAO whichObjectDAO) 
+    public EventDAO getEventDAO() 
     {
-        switch(whichObjectDAO){
-            case EVENT:
-                return new SQLServerEventDAO();
-            case TEAM:
-                return new SQLServerTeamDAO();
-            default:
-                return null;
-        }  
+        return new SQLServerEventDAO();    
     }
+
+    @Override
+    public TeamDAO getTeamDAO() {
+        return new SQLServerTeamDAO();
+    }
+
+    @Override
+    public SingleDAO getSingleDAO() {
+        return new SQLServerSingleDAO();
+    }
+    
     
 }

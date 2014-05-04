@@ -11,7 +11,7 @@ import Objects.Event;
 import Factory.SQLServerDAOFactory;
 
 
-public class SQLServerEventDAO implements ObjectsDAO{
+public class SQLServerEventDAO implements EventDAO{
     
     public SQLServerEventDAO(){}
     

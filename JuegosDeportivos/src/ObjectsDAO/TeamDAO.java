@@ -6,7 +6,7 @@
 
 package ObjectsDAO;
 
-import Objects.Event;
+import Objects.Teams;
 import java.util.Collection;
 import javax.sql.RowSet;
 
@@ -14,22 +14,24 @@ import javax.sql.RowSet;
  *
  * @author Martinez
  */
-public interface ObjectsDAO {
+public interface TeamDAO {
+    
     // Create new event
-    public int insertEvent();
+    public int insertTeam();
     
     //Update an event
-    public boolean updateEvent();
+    public boolean updateTeam();
     
     //Remove an event
-    public boolean deleteEvent();
+    public boolean deleteTeam();
     
     // Find an specific event
-    public Event findEvent(int pEventID);
+    public Teams findTeam(int pCompetitorID);
     
     // Select a info row from specific event 
-    public RowSet selectEventRS(int pEventID);
+    public RowSet selectTeamsRS(int pCompetitorID);
     
     // Select all info from table
-    public Collection selectAllEvents();
+    public Collection selectAllTeams();
+    
 }

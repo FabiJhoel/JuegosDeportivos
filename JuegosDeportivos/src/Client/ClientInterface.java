@@ -355,7 +355,7 @@ public class ClientInterface extends javax.swing.JFrame {
 
     private void ButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonInsertActionPerformed
         
-        ObjectsDAO eventDAO = sqlserverFactory.getObjectsDAO(enumDAO.EVENT);
+        EventDAO eventDAO = sqlserverFactory.getEventDAO();
         eventDAO.insertEvent();   
     }//GEN-LAST:event_ButtonInsertActionPerformed
 

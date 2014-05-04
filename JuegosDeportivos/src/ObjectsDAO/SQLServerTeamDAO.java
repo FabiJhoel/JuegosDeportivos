@@ -21,42 +21,42 @@ import javax.sql.RowSet;
  *
  * @author Martinez
  */
-public class SQLServerTeamDAO implements ObjectsDAO{
+public class SQLServerTeamDAO implements TeamDAO{
 
     public SQLServerTeamDAO() {
     }
-
+    
     @Override
-    public int insertEvent() {
+    public int insertTeam() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean updateEvent() {
+    public boolean updateTeam() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean deleteEvent() {
+    public boolean deleteTeam() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Event findEvent(int pEventID) {
+    public Teams findTeam(int pCompetitorID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public RowSet selectEventRS(int pEventID) {
+    public RowSet selectTeamsRS(int pCompetitorID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
-    public Collection selectAllEvents() {
+    public Collection selectAllTeams() {
         Connection conn = null;
         PreparedStatement stmt;
         ResultSet rs;
-        Collection eventList = null;
+        Collection teamList = null;
         Teams teamObj;
         
         try
@@ -65,7 +65,7 @@ public class SQLServerTeamDAO implements ObjectsDAO{
             stmt = conn.prepareStatement("SELECT * FROM Equipos");
             rs = stmt.executeQuery();
             
-            eventList = new ArrayList();
+            teamList = new ArrayList();
             
             while(rs.next()){
                 teamObj = new Teams(rs.getString("telContacto"),rs.getString("emailContacto")
@@ -73,7 +73,7 @@ public class SQLServerTeamDAO implements ObjectsDAO{
                         rs.getBoolean("genero"),rs.getString("entrenador")
                         ,rs.getBoolean("tipo"), rs.getInt("idAlojamiento"));
                                             
-                eventList.add(teamObj);
+                teamList.add(teamObj);
             }
         } 
         
@@ -98,7 +98,9 @@ public class SQLServerTeamDAO implements ObjectsDAO{
             }
         }
         
-        return eventList;
+        return teamList;
     }
+
+    
     
 }
