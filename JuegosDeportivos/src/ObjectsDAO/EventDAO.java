@@ -1,22 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package ObjectsDAO;
 
-import Objects.Event;
+import Objects.SportEvent;
 import java.util.Collection;
+import java.util.Date;
 import javax.sql.RowSet;
 
-/**
- *
- * @author Martinez
- */
+
 public interface EventDAO {
+    
     // Create new event
-    public int insertEvent();
+    public int insertEvent(String pName, boolean pMode, boolean pGender, Date pStartDate, Date pEndDate, 
+                            int pMetricID, double pMinRange, double pMaxRange, int pMaxCapacity, int pInstallationID);
     
     //Update an event
     public boolean updateEvent();
@@ -24,8 +18,11 @@ public interface EventDAO {
     //Remove an event
     public boolean deleteEvent();
     
+    // Find an specific installation ID 
+    public int findEventID(String pName);
+    
     // Find an specific event
-    public Event findEvent(int pEventID);
+    public SportEvent findEvent(int pEventID);
     
     // Select a info row from specific event 
     public RowSet selectEventRS(int pEventID);

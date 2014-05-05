@@ -7,7 +7,7 @@
 package ObjectsDAO;
 
 import Factory.SQLServerDAOFactory;
-import Objects.Event;
+import Objects.SportEvent;
 import Objects.Teams;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
