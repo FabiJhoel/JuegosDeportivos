@@ -8,6 +8,7 @@ package ObjectsDAO;
 
 import Objects.Individual;
 import java.util.Collection;
+import java.util.Date;
 import javax.sql.RowSet;
 
 /**
@@ -17,7 +18,8 @@ import javax.sql.RowSet;
 public interface IndividualDAO {
     
     // Create new event
-    public int insertSingle();
+    public int insertIndividual(String lastName1, String lastName2, Date dateOfBirth, String occupation, String city, int age, int competitorId,
+            int countryId, String name, boolean gender, String trainer, boolean type, int lodgingId);
     
     //Update an event
     public boolean updateSingle();

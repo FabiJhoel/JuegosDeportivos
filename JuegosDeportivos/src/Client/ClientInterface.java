@@ -121,7 +121,6 @@ public class ClientInterface extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -178,6 +177,14 @@ public class ClientInterface extends javax.swing.JFrame {
         label23 = new java.awt.Label();
         TextFieldMinRangeUP = new javax.swing.JTextField();
         ButtonUpdate = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        label2 = new java.awt.Label();
+        jLabel1 = new javax.swing.JLabel();
+        label24 = new java.awt.Label();
+        ComboBoxGender1 = new javax.swing.JComboBox();
+        TextFieldName1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        TextFieldName2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -185,22 +192,7 @@ public class ClientInterface extends javax.swing.JFrame {
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1355, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 513, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Competidores", jPanel2);
-
-        jPanel3.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel3.setBackground(new java.awt.Color(172, 195, 229));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -215,7 +207,7 @@ public class ClientInterface extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Series", jPanel3);
 
-        jPanel4.setBackground(new java.awt.Color(51, 255, 255));
+        jPanel4.setBackground(new java.awt.Color(172, 195, 229));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -674,6 +666,75 @@ public class ClientInterface extends javax.swing.JFrame {
         jTabbedPane1.addTab("Eventos", null, jPanel1, "");
         jPanel1.getAccessibleContext().setAccessibleName("tab1");
 
+        jPanel2.setBackground(new java.awt.Color(172, 195, 229));
+
+        label2.setAlignment(java.awt.Label.CENTER);
+        label2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        label2.setText("Insertar");
+
+        jLabel1.setText("Nombre:");
+
+        label24.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        label24.setText("Genero");
+
+        ComboBoxGender1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Femenino", "Masculino" }));
+        ComboBoxGender1.setSelectedIndex(-1);
+
+        jLabel2.setText("Entrenador:");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(label24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ComboBoxGender1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TextFieldName1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(1070, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(117, 117, 117)
+                    .addComponent(TextFieldName2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(1066, Short.MAX_VALUE)))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(label24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboBoxGender1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextFieldName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(304, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(105, 105, 105)
+                    .addComponent(TextFieldName2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(388, Short.MAX_VALUE)))
+        );
+
+        jTabbedPane1.addTab("Competidores", jPanel2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -801,6 +862,7 @@ public class ClientInterface extends javax.swing.JFrame {
     private javax.swing.JButton ButtonUpdate;
     private javax.swing.JComboBox ComboBoxEvents;
     private javax.swing.JComboBox ComboBoxGender;
+    private javax.swing.JComboBox ComboBoxGender1;
     private javax.swing.JComboBox ComboBoxGenderUP;
     private javax.swing.JComboBox ComboBoxInstallation;
     private javax.swing.JComboBox ComboBoxInstallationUP;
@@ -819,7 +881,11 @@ public class ClientInterface extends javax.swing.JFrame {
     private javax.swing.JTextField TextFieldMinRange;
     private javax.swing.JTextField TextFieldMinRangeUP;
     private javax.swing.JTextField TextFieldName;
+    private javax.swing.JTextField TextFieldName1;
+    private javax.swing.JTextField TextFieldName2;
     private javax.swing.JTextField TextFieldNameUP;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -842,10 +908,12 @@ public class ClientInterface extends javax.swing.JFrame {
     private java.awt.Label label17;
     private java.awt.Label label18;
     private java.awt.Label label19;
+    private java.awt.Label label2;
     private java.awt.Label label20;
     private java.awt.Label label21;
     private java.awt.Label label22;
     private java.awt.Label label23;
+    private java.awt.Label label24;
     private java.awt.Label label25;
     private java.awt.Label label26;
     private java.awt.Label label3;

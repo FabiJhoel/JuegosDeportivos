@@ -17,7 +17,8 @@ import javax.sql.RowSet;
 public interface TeamDAO {
     
     // Create new event
-    public int insertTeam();
+    public int insertTeam(String phoneContact, String emailContact, int competitorId,
+            int countryId, String name, boolean gender, String trainer, boolean type, int lodgingId);
     
     //Update an event
     public boolean updateTeam();

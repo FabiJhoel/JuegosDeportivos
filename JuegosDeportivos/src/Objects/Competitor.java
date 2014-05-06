@@ -12,33 +12,34 @@ package Objects;
  */
 public class Competitor {
     private int competitorId;
-    private String country;
+    private int countryId;
     private String name;
     private boolean gender;
     private String trainer;
     private boolean type;
     private int lodgingId;
 
-    public Competitor(int competitorId, String country, String name, boolean gender, String trainer, boolean type, int lodgingId) {
-        this.competitorId = competitorId;
-        this.country = country;
-        this.name = name;
-        this.gender = gender;
-        this.trainer = trainer;
-        this.type = type;
-        this.lodgingId = lodgingId;
+    public Competitor(int pCompetitorId, int pCountryId, String pName, boolean pGender, String pTrainer,
+            boolean pType, int pLodgingId) {
+        this.competitorId = pCompetitorId;
+        this.countryId = pCountryId;
+        this.name = pName;
+        this.gender = pGender;
+        this.trainer = pTrainer;
+        this.type = pType;
+        this.lodgingId = pLodgingId;
     }
 
     public int getCompetitorId() {
         return competitorId;
     }
 
-    public String getCountry() {
-        return country;
+    public int getCountryId() {
+        return countryId;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setCountryId(int pCountryId) {
+        this.countryId = pCountryId;
     }
 
     public String getName() {
