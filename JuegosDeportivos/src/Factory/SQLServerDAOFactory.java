@@ -37,6 +37,18 @@ public class SQLServerDAOFactory extends DAOFactory{
     {
         return new SQLServerEventDAO();    
     }
+    
+    @Override
+    public InstallationDAO getInstallationDAO() 
+    {
+        return new SQLServerInstallationDAO();    
+    }
+    
+    @Override
+    public MetricDAO getMetricDAO() 
+    {
+        return new SQLServerMetricDAO();    
+    }
 
     @Override
     public TeamDAO getTeamDAO() {
@@ -44,8 +56,8 @@ public class SQLServerDAOFactory extends DAOFactory{
     }
 
     @Override
-    public SingleDAO getSingleDAO() {
-        return new SQLServerSingleDAO();
+    public IndividualDAO getSingleDAO() {
+        return new SQLServerIndividualDAO();
     }
     
     

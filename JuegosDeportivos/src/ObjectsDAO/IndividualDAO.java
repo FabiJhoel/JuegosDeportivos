@@ -6,7 +6,7 @@
 
 package ObjectsDAO;
 
-import Objects.Single;
+import Objects.Individual;
 import java.util.Collection;
 import javax.sql.RowSet;
 
@@ -14,7 +14,7 @@ import javax.sql.RowSet;
  *
  * @author Martinez
  */
-public interface SingleDAO {
+public interface IndividualDAO {
     
     // Create new event
     public int insertSingle();
@@ -26,7 +26,7 @@ public interface SingleDAO {
     public boolean deleteSingle();
     
     // Find an specific event
-    public Single findSingle(int pCompetitorID);
+    public Individual findSingle(int pCompetitorID);
     
     // Select a info row from specific event 
     public RowSet selectSingleRS(int pCompetitorID);

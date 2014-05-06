@@ -8,8 +8,10 @@ public abstract class DAOFactory {
     
     //DAO Objects 
     public abstract EventDAO getEventDAO();
+    public abstract InstallationDAO getInstallationDAO(); 
+    public abstract MetricDAO getMetricDAO(); 
     public abstract TeamDAO getTeamDAO();
-    public abstract SingleDAO getSingleDAO();
+    public abstract IndividualDAO getSingleDAO();
     
     public static DAOFactory getDAOFactory(int whichFactory)
     {

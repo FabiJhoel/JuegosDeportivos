@@ -2,7 +2,7 @@ package Objects;
 
 import java.util.*;
 
-public class Event {
+public class SportEvent {
     
     private int eventID;
     private String name;
@@ -10,14 +10,19 @@ public class Event {
     private boolean gender;
     private Date startDate;
     private Date endDate;
-    private int metric;
+    private int idMetric;
     private double minRange;
     private double maxRange;
     private int maxCapacity;
     private int installationID;
     
-    public Event(int pEventID, String pName, boolean pMode, boolean pGender, Date pStartDate, Date pEndDate, 
-                 int pMetric, double pMinRange, double pMaxRange, int pMaxCapacity, int pInstallationID)
+     public SportEvent()
+     {
+         
+     }
+    
+    public SportEvent(int pEventID, String pName, boolean pMode, boolean pGender, Date pStartDate, Date pEndDate, 
+                 int pMetricID, double pMinRange, double pMaxRange, int pMaxCapacity, int pInstallationID)
     {
         eventID = pEventID;
         name = pName;
@@ -25,7 +30,7 @@ public class Event {
         gender = pGender;
         startDate = pStartDate;
         endDate = pEndDate;
-        metric = pMetric;
+        idMetric = pMetricID;
         minRange = pMinRange;
         maxRange = pMaxRange;
         maxCapacity = pMaxCapacity;
@@ -84,12 +89,12 @@ public class Event {
     
     public int getMetric()
     {
-        return metric;
+        return idMetric;
     }
     
     public void setMetric(int pMetric)
     {
-        metric = pMetric;
+        idMetric = pMetric;
     }
     
     public double getMinRange()

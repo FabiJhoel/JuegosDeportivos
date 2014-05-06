@@ -12,7 +12,7 @@ import java.sql.Date;
  *
  * @author Martinez
  */
-public class Single extends Competitor{
+public class Individual extends Competitor{
     private String lastName1;
     private String lastName2;
     private Date dateOfBirth;
@@ -20,7 +20,7 @@ public class Single extends Competitor{
     private String city;
     private int age;
 
-    public Single(String lastName1, String lastName2, Date dateOfBirth, String occupation, String city, int age, int competitorId,
+    public Individual(String lastName1, String lastName2, Date dateOfBirth, String occupation, String city, int age, int competitorId,
             String country, String name, boolean gender, String trainer, boolean type, int lodgingId) {
         super(competitorId, country, name, gender, trainer, type, lodgingId);
         this.lastName1 = lastName1;

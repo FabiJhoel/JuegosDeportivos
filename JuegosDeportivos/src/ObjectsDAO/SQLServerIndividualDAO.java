@@ -7,8 +7,8 @@
 package ObjectsDAO;
 
 import Factory.SQLServerDAOFactory;
-import Objects.Event;
-import Objects.Single;
+import Objects.SportEvent;
+import Objects.Individual;
 import Objects.Teams;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,9 +22,9 @@ import javax.sql.RowSet;
  *
  * @author Martinez
  */
-public class SQLServerSingleDAO implements SingleDAO{
+public class SQLServerIndividualDAO implements IndividualDAO{
 
-    public SQLServerSingleDAO() {
+    public SQLServerIndividualDAO() {
     
     }
 
@@ -44,7 +44,7 @@ public class SQLServerSingleDAO implements SingleDAO{
     }
 
     @Override
-    public Single findSingle(int pCompetitorID) {
+    public Individual findSingle(int pCompetitorID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -59,7 +59,7 @@ public class SQLServerSingleDAO implements SingleDAO{
         PreparedStatement stmt;
         ResultSet rs;
         Collection singlesList = null;
-        Single singleObj;
+        Individual singleObj;
         
         try
         {  
@@ -70,7 +70,7 @@ public class SQLServerSingleDAO implements SingleDAO{
             singlesList = new ArrayList();
             
             while(rs.next()){
-                singleObj = new Single(rs.getString("apellido1"),rs.getString("apellido2"),
+                singleObj = new Individual(rs.getString("apellido1"),rs.getString("apellido2"),
                         rs.getDate("fechaNac"),rs.getString("ocupacion"),rs.getString("ciudad"),
                         rs.getInt("edad"),rs.getInt("idCompetidor"), rs.getString("pais"),rs.getString("nombre"),
                         rs.getBoolean("genero"),rs.getString("entrenador"),rs.getBoolean("tipo"), rs.getInt("idAlojamiento"));
