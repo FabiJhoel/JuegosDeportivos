@@ -7,6 +7,11 @@ public class Installation {
     private String address;
     private int numbOfSeats;
     
+    public Installation()
+    {
+    
+    }
+    
     public Installation(int pInstallationID, String pName, String pAddress, int pNumbOfSeats)
     {
         installationID = pInstallationID;

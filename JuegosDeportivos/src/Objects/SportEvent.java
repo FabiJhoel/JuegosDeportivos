@@ -57,6 +57,16 @@ public class SportEvent {
         name = pName;
     }
     
+    public boolean getEventMode()
+    {
+        return mode;
+    }
+    
+    public void setEventMode(boolean pMode)
+    {
+        mode = pMode;
+    }
+    
     public boolean getGender()
     {
         return gender;
@@ -87,12 +97,12 @@ public class SportEvent {
         endDate = pEndDate;
     }
     
-    public int getMetric()
+    public int getMetricID()
     {
         return idMetric;
     }
     
-    public void setMetric(int pMetric)
+    public void setMetricID(int pMetric)
     {
         idMetric = pMetric;
     }
