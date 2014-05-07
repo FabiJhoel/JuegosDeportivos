@@ -6,7 +6,7 @@
 
 package Objects;
 
-import java.sql.Date;
+import java.util.*;
 
 /**
  *
@@ -21,8 +21,8 @@ public class Individual extends Competitor{
     private int age;
 
     public Individual(String lastName1, String lastName2, Date dateOfBirth, String occupation, String city, int age, int competitorId,
-            String country, String name, boolean gender, String trainer, boolean type, int lodgingId) {
-        super(competitorId, country, name, gender, trainer, type, lodgingId);
+            int countryId, String name, boolean gender, String trainer, boolean type, int lodgingId) {
+        super(competitorId, countryId, name, gender, trainer, type, lodgingId);
         this.lastName1 = lastName1;
         this.lastName2 = lastName2;
         this.dateOfBirth = dateOfBirth;

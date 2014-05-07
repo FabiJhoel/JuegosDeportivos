@@ -15,8 +15,8 @@ public class Teams extends Competitor{
     private String emailContact;
 
     public Teams(String phoneContact, String emailContact, int competitorId,
-            String country, String name, boolean gender, String trainer, boolean type, int lodgingId) {
-        super(competitorId, country, name, gender, trainer, type, lodgingId);
+            int countryId, String name, boolean gender, String trainer, boolean type, int lodgingId) {
+        super(competitorId, countryId, name, gender, trainer, type, lodgingId);
         this.phoneContact = phoneContact;
         this.emailContact = emailContact;
     }
