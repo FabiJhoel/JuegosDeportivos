@@ -18,7 +18,7 @@ public interface EventDAO {
     //Remove an event
     public boolean deleteEvent();
     
-    // Find an specific installation ID 
+    // Find an specific Event ID 
     public int findEventID(String pName);
     
     // Find an specific event

@@ -5,6 +5,11 @@ public class Metric {
     
     private int metricID;
     private String description;
+    
+     public Metric()
+     {
+         
+     }
 
     public Metric(int metricID, String description) {
         this.metricID = metricID;

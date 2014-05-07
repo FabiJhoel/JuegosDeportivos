@@ -13,6 +13,50 @@ import java.util.Collection;
 public class SQLServerMetricDAO implements MetricDAO{
     
     @Override
+    public Metric findMetric(int pMetricID) 
+    {
+        Connection conn = null;
+        PreparedStatement preparedStmt;
+        ResultSet rs;
+        Metric metricObj = new Metric();
+        
+        try
+        {  
+            conn = SQLServerDAOFactory.createConnection();
+            preparedStmt = conn.prepareStatement("SELECT * FROM Metricas WHERE id = ?");
+            preparedStmt.setInt(1, pMetricID);
+            rs = preparedStmt.executeQuery();
+            
+            while(rs.next()){
+                metricObj = new Metric(rs.getInt("id"), rs.getString("descripcion"));
+            }
+        } 
+        
+        catch(SQLException e)
+        {
+            System.out.println("Message: " + e.getMessage() + "\n" + "Code: " + e.getErrorCode());
+        }
+        
+        finally
+        {
+            if(conn != null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                
+                catch(SQLException e)
+                {
+                    System.out.println("Message: " + e.getMessage() + "\n" + "Code: " + e.getErrorCode());
+                }
+            }
+        }
+        
+        return metricObj;
+    }
+    
+    @Override
     public int findMetricID(String pDescription)
     {
         Connection conn = null;

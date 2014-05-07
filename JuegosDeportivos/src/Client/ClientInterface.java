@@ -36,18 +36,9 @@ public class ClientInterface extends javax.swing.JFrame {
        loadMetrics(ComboBoxMetric);
        
        //Events
-       loadEvents(ComboBoxEvents);
-              
-        // events
-         ComboBoxEvents.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-
-                JComboBox comboBox = (JComboBox) event.getSource();    
-                String selectedEvent = comboBox.getSelectedItem().toString();            
-                deployEvents(selectedEvent);
-            }
-        });
-            
+       loadEvents(ComboBoxEvents);     
+       setEventItemsListener();
+     
     }
     
     public void deployEvents(String pName)
@@ -62,6 +53,40 @@ public class ClientInterface extends javax.swing.JFrame {
             TextFieldMinRangeUP.setText(Double.toString(showedEvent.getMinRange()));
             DateChooserStartUP.setDate(showedEvent.getStartDate());
             DateChooserEndUP.setDate(showedEvent.getEndDate());
+            
+           if (!showedEvent.getEventMode())
+               ComboBoxModeUP.setSelectedIndex(0);  
+           else
+               ComboBoxModeUP.setSelectedIndex(1);     
+           
+           if (showedEvent.getGender())
+               ComboBoxGenderUP.setSelectedIndex(0);
+           else
+               ComboBoxGenderUP.setSelectedIndex(1);
+           
+           loadInstallations(ComboBoxInstallationUP);
+           Installation actualInsta = instaDAO.findInstallation(showedEvent.getInstalalationID());
+           
+           for(int i = 0; i<ComboBoxInstallationUP.getItemCount(); i++) 
+           {
+               if (ComboBoxInstallationUP.getItemAt(i).toString().equals(actualInsta.getName()))
+               {
+                   ComboBoxInstallationUP.setSelectedIndex(i);
+                   break;
+               }
+           }
+           
+           loadMetrics(ComboBoxMetricUP);
+           Metric actualMetric = metricDAO.findMetric(showedEvent.getMetricID());
+           for(int i = 0; i<ComboBoxMetricUP.getItemCount(); i++) 
+           {
+               if (ComboBoxMetricUP.getItemAt(i).toString().equals(actualMetric.getDescription()))
+               {
+                   ComboBoxMetricUP.setSelectedIndex(i);
+                   break;
+               }            
+           }
+
         }
         
         catch(Exception e)
@@ -69,6 +94,18 @@ public class ClientInterface extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Imposible cargar el evento\n"
                 + "Message: " + e.getMessage());
         }
+    }
+    
+    public void setEventItemsListener()
+    {
+        ComboBoxEvents.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+
+                JComboBox comboBox = (JComboBox) event.getSource();    
+                String selectedEvent = comboBox.getSelectedItem().toString();            
+                deployEvents(selectedEvent);
+            }
+        });
     }
     
     public void loadEvents(JComboBox comboBox)
@@ -79,9 +116,9 @@ public class ClientInterface extends javax.swing.JFrame {
         for(SportEvent event : eventList) 
         {
             comboBox.addItem(event.getName());
-        }
+        }   
         
-        comboBox.setSelectedIndex(-1);     
+        comboBox.setSelectedIndex(-1); 
     }
     
     
@@ -177,6 +214,7 @@ public class ClientInterface extends javax.swing.JFrame {
         label23 = new java.awt.Label();
         TextFieldMinRangeUP = new javax.swing.JTextField();
         ButtonUpdate = new javax.swing.JButton();
+<<<<<<< HEAD
         jPanel2 = new javax.swing.JPanel();
         label2 = new java.awt.Label();
         jLabel1 = new javax.swing.JLabel();
@@ -185,6 +223,9 @@ public class ClientInterface extends javax.swing.JFrame {
         TextFieldName1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         TextFieldName2 = new javax.swing.JTextField();
+=======
+        ButtonRefresh = new javax.swing.JButton();
+>>>>>>> a2ee4f213228ffab2718d03922819b829b2dd2a1
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -504,6 +545,13 @@ public class ClientInterface extends javax.swing.JFrame {
             }
         });
 
+        ButtonRefresh.setText("Refrescar");
+        ButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonRefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -514,10 +562,6 @@ public class ClientInterface extends javax.swing.JFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGap(206, 206, 206)
                         .addComponent(label23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ComboBoxEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -537,7 +581,7 @@ public class ClientInterface extends javax.swing.JFrame {
                         .addComponent(label22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TextFieldMaxRangeUP, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(ButtonUpdate)
                         .addGroup(jPanel10Layout.createSequentialGroup()
                             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -558,17 +602,25 @@ public class ClientInterface extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(TextFieldMinRangeUP, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(TextFieldMaxCapacityUP, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(TextFieldMaxCapacityUP, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel10Layout.createSequentialGroup()
+                            .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(ComboBoxEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ButtonRefresh))))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(19, 19, 19)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ComboBoxEvents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ComboBoxEvents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ButtonRefresh))
                     .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -751,6 +803,10 @@ public class ClientInterface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonUpdateActionPerformed
+
     private void ButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonInsertActionPerformed
 
         EventDAO eventDAO = sqlserverFactory.getEventDAO();
@@ -815,12 +871,17 @@ public class ClientInterface extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Valores inválidos han sido ingresados\n"
                 + "Message: " + e.getMessage());
         }
-
     }//GEN-LAST:event_ButtonInsertActionPerformed
 
-    private void ButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUpdateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonUpdateActionPerformed
+    private void ButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonRefreshActionPerformed
+        
+        ComboBoxEvents.removeActionListener(ComboBoxEvents.getActionListeners()[0]);
+        ComboBoxEvents.removeAllItems();
+        //to do--> limpiar todos los otros campos
+        loadEvents(ComboBoxEvents);
+        setEventItemsListener();
+        
+    }//GEN-LAST:event_ButtonRefreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -859,6 +920,7 @@ public class ClientInterface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonInsert;
+    private javax.swing.JButton ButtonRefresh;
     private javax.swing.JButton ButtonUpdate;
     private javax.swing.JComboBox ComboBoxEvents;
     private javax.swing.JComboBox ComboBoxGender;
