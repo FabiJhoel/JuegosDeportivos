@@ -14,19 +14,21 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-
-
 public class ClientInterface extends javax.swing.JFrame {
     
     DAOFactory sqlserverFactory = DAOFactory.getDAOFactory(DAOFactory.SQLSERVER);
-    MetricDAO metricDAO;
-    InstallationDAO instaDAO;
-    EventDAO eventDAO;
+    MetricDAO metricDAO = sqlserverFactory.getMetricDAO();;
+    InstallationDAO instaDAO = sqlserverFactory.getInstallationDAO();
+    EventDAO eventDAO = sqlserverFactory.getEventDAO();;
+    
+    int eventToUpdateID = 0;
 
     public ClientInterface() {
         super("Juegos Deportivos");
         initComponents();
-        setLocationRelativeTo(null);      
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+        //setLocationRelativeTo(null);      
         
         /******     Load comboBoxes (Events)    ******/
         //Installations
@@ -64,6 +66,7 @@ public class ClientInterface extends javax.swing.JFrame {
            else
                ComboBoxGenderUP.setSelectedIndex(1);
            
+           ComboBoxInstallationUP.removeAllItems();
            loadInstallations(ComboBoxInstallationUP);
            Installation actualInsta = instaDAO.findInstallation(showedEvent.getInstalalationID());
            
@@ -76,6 +79,7 @@ public class ClientInterface extends javax.swing.JFrame {
                }
            }
            
+           ComboBoxMetricUP.removeAllItems();
            loadMetrics(ComboBoxMetricUP);
            Metric actualMetric = metricDAO.findMetric(showedEvent.getMetricID());
            for(int i = 0; i<ComboBoxMetricUP.getItemCount(); i++) 
@@ -102,7 +106,8 @@ public class ClientInterface extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent event) {
 
                 JComboBox comboBox = (JComboBox) event.getSource();    
-                String selectedEvent = comboBox.getSelectedItem().toString();            
+                String selectedEvent = comboBox.getSelectedItem().toString();    
+                eventToUpdateID = eventDAO.findEventID(selectedEvent);
                 deployEvents(selectedEvent);
             }
         });
@@ -110,8 +115,6 @@ public class ClientInterface extends javax.swing.JFrame {
     
     public void loadEvents(JComboBox comboBox)
     {
-        eventDAO = sqlserverFactory.getEventDAO();
-        
         Collection<SportEvent> eventList = eventDAO.selectAllEvents();
         for(SportEvent event : eventList) 
         {
@@ -124,8 +127,6 @@ public class ClientInterface extends javax.swing.JFrame {
     
     public void loadInstallations(JComboBox comboBox)
     {
-        instaDAO = sqlserverFactory.getInstallationDAO();
-        
         Collection<Installation> installationList = instaDAO.selectAllInstallations();
         for(Installation insta : installationList) 
         {
@@ -136,9 +137,7 @@ public class ClientInterface extends javax.swing.JFrame {
     }
     
     public void loadMetrics(JComboBox comboBox)
-    {
-        metricDAO = sqlserverFactory.getMetricDAO();
-        
+    {       
         Collection<Metric> metricList = metricDAO.selectAllMetrics();
         for(Metric metr : metricList) 
         {
@@ -218,10 +217,13 @@ public class ClientInterface extends javax.swing.JFrame {
         ButtonRefresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1366, 768));
+        setResizable(false);
 
         jTabbedPane1.setBackground(new java.awt.Color(172, 195, 229));
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(1366, 610));
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 204));
 
@@ -229,11 +231,11 @@ public class ClientInterface extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1355, Short.MAX_VALUE)
+            .addGap(0, 1357, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 513, Short.MAX_VALUE)
+            .addGap(0, 567, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Competidores", jPanel2);
@@ -244,11 +246,11 @@ public class ClientInterface extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1355, Short.MAX_VALUE)
+            .addGap(0, 1357, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 513, Short.MAX_VALUE)
+            .addGap(0, 567, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Series", jPanel3);
@@ -259,11 +261,11 @@ public class ClientInterface extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1355, Short.MAX_VALUE)
+            .addGap(0, 1357, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 513, Short.MAX_VALUE)
+            .addGap(0, 567, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Consultas", jPanel4);
@@ -278,11 +280,11 @@ public class ClientInterface extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 303, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         label1.setAlignment(java.awt.Label.CENTER);
@@ -495,9 +497,9 @@ public class ClientInterface extends javax.swing.JFrame {
                     .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextFieldMinRange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(27, 27, 27)
                 .addComponent(ButtonInsert)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel10.setBackground(new java.awt.Color(172, 195, 229));
@@ -614,7 +616,7 @@ public class ClientInterface extends javax.swing.JFrame {
                             .addComponent(ComboBoxEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ButtonRefresh))))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -669,9 +671,9 @@ public class ClientInterface extends javax.swing.JFrame {
                     .addComponent(label22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextFieldMinRangeUP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addComponent(ButtonUpdate)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -679,45 +681,40 @@ public class ClientInterface extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(355, 355, 355)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(337, 337, 337)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(183, 183, 183))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Eventos", null, jPanel1, "");
@@ -727,11 +724,13 @@ public class ClientInterface extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("Eventos");
@@ -740,12 +739,65 @@ public class ClientInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUpdateActionPerformed
-        // TODO add your handling code here:
+        // Prepare values
+        String pName;
+        java.util.Date pStartDate,  pEndDate;
+        boolean pMode = false, pGender = false, updated = false;
+        int pMetric, pMaxCapacity, pInstallationID;
+        double pMinRange, pMaxRange;
+
+        try
+        {
+            pName = TextFieldNameUP.getText();
+
+            switch (ComboBoxModeUP.getSelectedItem().toString())
+            {
+                case "Individual":
+                pMode = false;
+                break;
+                case "Equipo":
+                pMode = true;
+                break;
+            }
+
+            switch (ComboBoxGenderUP.getSelectedItem().toString())
+            {
+                case "Femenino":
+                pGender = true;
+                break;
+                case "Masculino":
+                pGender = false;
+                break;
+            }
+
+            pStartDate = DateChooserStartUP.getDate();
+            pEndDate = DateChooserEndUP.getDate();
+
+            pMetric = metricDAO.findMetricID(ComboBoxMetricUP.getSelectedItem().toString());
+
+            pMinRange = Double.parseDouble(TextFieldMinRangeUP.getText());
+            pMaxRange = Double.parseDouble(TextFieldMaxRangeUP.getText());
+            pMaxCapacity = Integer.parseInt(TextFieldMaxCapacityUP.getText());
+
+            pInstallationID = instaDAO.findInstallationID(ComboBoxInstallationUP.getSelectedItem().toString());
+        
+            updated = eventDAO.updateEvent(eventToUpdateID, pName, pMode, pGender, pStartDate, pEndDate, pMetric, pMinRange, pMaxRange, pMaxCapacity, pInstallationID); 
+        
+            if (updated)
+                JOptionPane.showMessageDialog(null, "Evento actualizado correctamente");
+            else
+                JOptionPane.showMessageDialog(null, "Error al actualizar Evento");     
+        }
+        
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Valores inválidos han sido ingresados\n"
+                + "Message: " + e.getMessage());
+        }
     }//GEN-LAST:event_ButtonUpdateActionPerformed
 
     private void ButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonInsertActionPerformed
 
-        EventDAO eventDAO = sqlserverFactory.getEventDAO();
         int inserted = 0;
 
         // Prepare values
@@ -782,23 +834,21 @@ public class ClientInterface extends javax.swing.JFrame {
             pStartDate = DateChooserStart.getDate();
             pEndDate = DateChooserEnd.getDate();
 
-            metricDAO = sqlserverFactory.getMetricDAO();
             pMetric = metricDAO.findMetricID(ComboBoxMetric.getSelectedItem().toString());
 
             pMinRange = Double.parseDouble(TextFieldMinRange.getText());
             pMaxRange = Double.parseDouble(TextFieldMaxRange.getText());
             pMaxCapacity = Integer.parseInt(TextFieldMaxCapacity.getText());
 
-            instaDAO = sqlserverFactory.getInstallationDAO();
             pInstallationID = instaDAO.findInstallationID(ComboBoxInstallation.getSelectedItem().toString());
 
             // Insert into Data Base
             inserted = eventDAO.insertEvent(pName, pMode, pGender, pStartDate, pEndDate, pMetric, pMinRange, pMaxRange, pMaxCapacity, pInstallationID);
 
             if (inserted != 0)
-            JOptionPane.showMessageDialog(null, "Evento creado correctamente");
+                JOptionPane.showMessageDialog(null, "Evento creado correctamente");
             else
-            JOptionPane.showMessageDialog(null, "Error al crear nuevo Evento");
+                JOptionPane.showMessageDialog(null, "Error al crear nuevo Evento");
 
         }
 
@@ -813,10 +863,19 @@ public class ClientInterface extends javax.swing.JFrame {
         
         ComboBoxEvents.removeActionListener(ComboBoxEvents.getActionListeners()[0]);
         ComboBoxEvents.removeAllItems();
-        //to do--> limpiar todos los otros campos
         loadEvents(ComboBoxEvents);
         setEventItemsListener();
         
+        TextFieldNameUP.setText("");
+        TextFieldMaxCapacityUP.setText("");
+        TextFieldMaxRangeUP.setText("");
+        TextFieldMinRangeUP.setText("");
+        ComboBoxModeUP.setSelectedIndex(-1);
+        ComboBoxGenderUP.setSelectedIndex(-1);
+        ComboBoxInstallationUP.setSelectedIndex(-1);
+        ComboBoxMetricUP.setSelectedIndex(-1);
+        DateChooserStartUP.setCalendar(null);
+        DateChooserEndUP.setCalendar(null);
     }//GEN-LAST:event_ButtonRefreshActionPerformed
 
     /**
@@ -848,7 +907,7 @@ public class ClientInterface extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+            public void run() {               
                 new ClientInterface().setVisible(true);
             }
         });

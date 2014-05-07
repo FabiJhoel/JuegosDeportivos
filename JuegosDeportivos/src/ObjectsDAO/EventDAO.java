@@ -13,7 +13,8 @@ public interface EventDAO {
                             int pMetricID, double pMinRange, double pMaxRange, int pMaxCapacity, int pInstallationID);
     
     //Update an event
-    public boolean updateEvent();
+    public boolean updateEvent(int pEventID, String pName, boolean pMode, boolean pGender, Date pStartDate, Date pEndDate, 
+                            int pMetricID, double pMinRange, double pMaxRange, int pMaxCapacity, int pInstallationID);
     
     //Remove an event
     public boolean deleteEvent();

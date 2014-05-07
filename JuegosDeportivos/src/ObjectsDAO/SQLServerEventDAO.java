@@ -23,7 +23,6 @@ public class SQLServerEventDAO implements EventDAO{
     {
         Connection conn = null;
         PreparedStatement preparedStmt;
-        SportEvent eventObj;
         int inserted = 0;
         
         try
@@ -72,9 +71,58 @@ public class SQLServerEventDAO implements EventDAO{
     
     // Return true on success, false on failure or error
     @Override
-    public boolean updateEvent() 
+    public boolean updateEvent(int pEventID, String pName, boolean pMode, boolean pGender, Date pStartDate, Date pEndDate, 
+                            int pMetricID, double pMinRange, double pMaxRange, int pMaxCapacity, int pInstallationID) 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = null;
+        PreparedStatement preparedStmt;
+        boolean updated = false;
+        
+        try
+        {  
+           conn = SQLServerDAOFactory.createConnection();
+            preparedStmt = conn.prepareStatement("UPDATE Eventos SET nombre = ?, modalidad = ?, genero = ?, "
+                                                 + "fechaInicio = ?, fechaFinal = ?, idMetrica = ?, rangoMin = ?,"
+                                                 + " rangoMax = ?, capacidadMax = ?, idInstalacion = ? WHERE id = ?");        
+            preparedStmt.setString(1, pName);
+            preparedStmt.setBoolean(2, pMode);
+            preparedStmt.setBoolean(3, pGender);
+            java.sql.Date sqlStartDate = new java.sql.Date(pStartDate.getTime());
+            preparedStmt.setDate(4, sqlStartDate);
+            java.sql.Date sqlEndDate = new java.sql.Date(pEndDate.getTime());
+            preparedStmt.setDate(5, sqlEndDate);        
+            preparedStmt.setInt(6, pMetricID);
+            preparedStmt.setDouble(7, pMinRange);
+            preparedStmt.setDouble(8, pMaxRange);
+            preparedStmt.setInt(9, pMaxCapacity);
+            preparedStmt.setInt(10, pInstallationID);
+            preparedStmt.setInt(11, pEventID);
+            
+            preparedStmt.executeUpdate(); 
+            updated = true;
+        }
+        
+        catch(SQLException e)
+        {
+            System.out.println("Message: " + e.getMessage() + "\n" + "Code: " + e.getErrorCode());
+        }
+        
+        finally
+        {
+            if(conn != null)
+            {
+                try
+                {
+                    conn.close();
+                }
+                
+                catch(SQLException e)
+                {
+                    System.out.println("Message: " + e.getMessage() + "\n" + "Code: " + e.getErrorCode());
+                }
+            }
+        }
+        return updated;
     }
 
     // Return true on success, false on failure
