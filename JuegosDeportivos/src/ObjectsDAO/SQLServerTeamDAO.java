@@ -76,8 +76,40 @@ public class SQLServerTeamDAO implements TeamDAO{
     }
 
     @Override
-    public boolean deleteTeam() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int deleteTeam(int teamID) {
+    Connection conn = null;
+        PreparedStatement preparedStmt;
+        int deleted = 0;
+        try
+        {  
+           conn = SQLServerDAOFactory.createConnection();
+           preparedStmt = conn.prepareStatement("DELETE FROM Competidores WHERE id=?");
+           preparedStmt.setInt(1,teamID);
+
+           deleted = preparedStmt.executeUpdate();        
+        }
+
+        catch(SQLException e)
+        {
+            System.out.println("Message: " + e.getMessage() + "\n" + "Code: " + e.getErrorCode());
+        }
+
+        finally
+        {
+            if(conn != null)
+            {
+                try
+                {
+                    conn.close();
+                }
+
+                catch(SQLException e)
+                {
+                    System.out.println("Message: " + e.getMessage() + "\n" + "Code: " + e.getErrorCode());
+                }
+            }
+        }
+        return deleted;
     }
 
     @Override

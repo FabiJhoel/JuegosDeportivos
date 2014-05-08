@@ -1611,7 +1611,8 @@ public class ClientInterface extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {               
+            @Override
+            public void run() {
                 new ClientInterface().setVisible(true);
             }
         });

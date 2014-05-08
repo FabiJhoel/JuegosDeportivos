@@ -82,27 +82,59 @@ public class SQLServerIndividualDAO implements IndividualDAO{
     }
 
     @Override
-    public boolean updateSingle() {
+    public boolean updateIndividual() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean deleteSingle() {
+    public int deleteIndividual(int individualID) {
+        Connection conn = null;
+        PreparedStatement preparedStmt;
+        int deleted = 0;
+        try
+        {  
+           conn = SQLServerDAOFactory.createConnection();
+           preparedStmt = conn.prepareStatement("DELETE FROM Competidores WHERE id=?");
+           preparedStmt.setInt(1,individualID);
+
+           deleted = preparedStmt.executeUpdate();        
+        }
+
+        catch(SQLException e)
+        {
+            System.out.println("Message: " + e.getMessage() + "\n" + "Code: " + e.getErrorCode());
+        }
+
+        finally
+        {
+            if(conn != null)
+            {
+                try
+                {
+                    conn.close();
+                }
+
+                catch(SQLException e)
+                {
+                    System.out.println("Message: " + e.getMessage() + "\n" + "Code: " + e.getErrorCode());
+                }
+            }
+        }
+        return deleted;
+    }
+
+    @Override
+    public Individual findIndividual(int pCompetitorID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Individual findSingle(int pCompetitorID) {
+    public RowSet selectIndividualRS(int pCompetitorID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public RowSet selectSingleRS(int pCompetitorID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Collection selectAllSingles() {
+    public Collection selectAllIndividuals() {
         Connection conn = null;
         PreparedStatement stmt;
         ResultSet rs;

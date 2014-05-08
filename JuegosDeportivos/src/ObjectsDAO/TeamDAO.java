@@ -24,7 +24,7 @@ public interface TeamDAO {
     public boolean updateTeam();
     
     //Remove an event
-    public boolean deleteTeam();
+    public int deleteTeam(int teamID);
     
     // Find an specific event
     public Teams findTeam(int pCompetitorID);

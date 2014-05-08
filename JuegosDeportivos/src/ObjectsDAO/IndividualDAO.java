@@ -22,18 +22,18 @@ public interface IndividualDAO {
             int countryId, String name, boolean gender, String trainer, boolean type, int lodgingId);
     
     //Update an event
-    public boolean updateSingle();
+    public boolean updateIndividual();
     
     //Remove an event
-    public boolean deleteSingle();
+    public int deleteIndividual(int individualID);
     
     // Find an specific event
-    public Individual findSingle(int pCompetitorID);
+    public Individual findIndividual(int pCompetitorID);
     
     // Select a info row from specific event 
-    public RowSet selectSingleRS(int pCompetitorID);
+    public RowSet selectIndividualRS(int pCompetitorID);
     
     // Select all info from table
-    public Collection selectAllSingles();
+    public Collection selectAllIndividuals();
     
 }

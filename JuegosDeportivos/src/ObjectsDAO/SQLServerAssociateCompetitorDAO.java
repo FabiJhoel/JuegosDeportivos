@@ -7,7 +7,6 @@
 package ObjectsDAO;
 
 import Factory.SQLServerDAOFactory;
-import Objects.Competitor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -16,39 +15,30 @@ import java.sql.SQLException;
  *
  * @author Martinez
  */
-public class SQLServerCompetitorDAO implements CompetitorDAO{
-
-    public SQLServerCompetitorDAO() {
-    }
+public class SQLServerAssociateCompetitorDAO implements AssociateCompetitorDAO{
 
     @Override
-    public int insertCompetitor(int pCountryId, String pName, boolean pGender, String pTrainer,
-            boolean pType, int pLodgingId){
+    @SuppressWarnings("empty-statement")
+    public int associateCompetitor(int individualID, int teamID) {
         Connection conn = null;
         PreparedStatement preparedStmt;
-        Competitor competitorObj;
         int inserted = 0;
-        
         try
         {  
            conn = SQLServerDAOFactory.createConnection();
-            preparedStmt = conn.prepareStatement("INSERT INTO Competidores (nombre,genero,"
-                    + " entrenador,tipo,idAlojamiento,idPais)"
-                    + " VALUES (?, ?, ?, ?, ?, ?)");
-            preparedStmt.setString(1, pName);
-            preparedStmt.setBoolean(2, pGender);
-            preparedStmt.setString(3, pTrainer);
-            preparedStmt.setBoolean(4, pType);
-            preparedStmt.setInt(5, pLodgingId);
-            preparedStmt.setInt(6,pCountryId);
-            inserted = preparedStmt.executeUpdate();        
+           preparedStmt = conn.prepareStatement("INSERT INTO IndividuoEquipos(idEquipo,idIndividuo)"
+                   + " VALUES (?, ?)");
+           preparedStmt.setInt(1,teamID);
+           preparedStmt.setInt(2,individualID);;
+
+           inserted = preparedStmt.executeUpdate();        
         }
-        
+
         catch(SQLException e)
         {
             System.out.println("Message: " + e.getMessage() + "\n" + "Code: " + e.getErrorCode());
         }
-        
+
         finally
         {
             if(conn != null)
@@ -57,7 +47,7 @@ public class SQLServerCompetitorDAO implements CompetitorDAO{
                 {
                     conn.close();
                 }
-                
+
                 catch(SQLException e)
                 {
                     System.out.println("Message: " + e.getMessage() + "\n" + "Code: " + e.getErrorCode());
@@ -65,8 +55,7 @@ public class SQLServerCompetitorDAO implements CompetitorDAO{
             }
         }
         return inserted;
-    
-    }
         
+    }
     
 }
