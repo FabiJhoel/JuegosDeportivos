@@ -6,14 +6,13 @@
 
 package ObjectsDAO;
 
+import java.util.Collection;
+
 /**
  *
  * @author Martinez
  */
-public interface CompetitorDAO {
-    
-    //Create new Competitor
-    public int insertCompetitor(String pCountryCode, String pName,String pGender, String pTrainer,
-            boolean pType, int pLodgingId);
-    
+public interface CountryDAO {
+    public String getCodeCountry(String pCode);
+    public Collection selectAllCountries();
 }

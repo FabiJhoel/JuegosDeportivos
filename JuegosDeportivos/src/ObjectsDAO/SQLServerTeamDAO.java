@@ -26,10 +26,10 @@ public class SQLServerTeamDAO implements TeamDAO{
     }
     
     @Override
-    public int insertTeam(String phoneContact, String emailContact, int competitorId,
-            int countryId, String name, boolean gender, String trainer, boolean type, int lodgingId) {
+    public int insertTeam(String phoneContact, String emailContact,
+            String countryCode, String name, String gender, String trainer, boolean type, int lodgingId) {
         SQLServerCompetitorDAO sqlsc= new SQLServerCompetitorDAO();
-        sqlsc.insertCompetitor(countryId, name, gender, trainer, type, lodgingId);
+        sqlsc.insertCompetitor(countryCode, name, gender, trainer, type, lodgingId);
         Connection conn = null;
         PreparedStatement preparedStmt;
         Teams teamObj;
@@ -37,10 +37,9 @@ public class SQLServerTeamDAO implements TeamDAO{
         try
         {  
            conn = SQLServerDAOFactory.createConnection();
-           preparedStmt = conn.prepareStatement("INSERT INTO Individuos(idCompetidor,telContacto,emailContacto"
+           preparedStmt = conn.prepareStatement("INSERT INTO Equipos (nombre,telContacto,emailContacto)"
                    + " VALUES (?, ?, ?)");
-           //Falta tomar el id que se genera al crear el competidor.
-           //preparedStmt.setInt(1,0);
+           preparedStmt.setString(1,name);
            preparedStmt.setString(2,phoneContact);
            preparedStmt.setString(3,emailContact);
 
@@ -140,8 +139,8 @@ public class SQLServerTeamDAO implements TeamDAO{
             
             while(rs.next()){
                 teamObj = new Teams(rs.getString("telContacto"),rs.getString("emailContacto")
-                        ,rs.getInt("idCompetidor"), rs.getInt("pais"),rs.getString("nombre"),
-                        rs.getBoolean("genero"),rs.getString("entrenador")
+                        ,rs.getString("pais"),rs.getString("nombre"),
+                        rs.getString("genero"),rs.getString("entrenador")
                         ,rs.getBoolean("tipo"), rs.getInt("idAlojamiento"));
                                             
                 teamList.add(teamObj);

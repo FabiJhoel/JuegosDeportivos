@@ -11,18 +11,16 @@ package Objects;
  * @author Martinez
  */
 public class Competitor {
-    private int competitorId;
-    private int countryId;
+    private String countryCode;
     private String name;
-    private boolean gender;
+    private String gender;
     private String trainer;
     private boolean type;
     private int lodgingId;
 
-    public Competitor(int pCompetitorId, int pCountryId, String pName, boolean pGender, String pTrainer,
+    public Competitor(String pCountryCode, String pName, String pGender, String pTrainer,
             boolean pType, int pLodgingId) {
-        this.competitorId = pCompetitorId;
-        this.countryId = pCountryId;
+        this.countryCode = pCountryCode;
         this.name = pName;
         this.gender = pGender;
         this.trainer = pTrainer;
@@ -30,16 +28,12 @@ public class Competitor {
         this.lodgingId = pLodgingId;
     }
 
-    public int getCompetitorId() {
-        return competitorId;
+    public String getCountryId() {
+        return countryCode;
     }
 
-    public int getCountryId() {
-        return countryId;
-    }
-
-    public void setCountryId(int pCountryId) {
-        this.countryId = pCountryId;
+    public void setCountryId(String pCountryCode) {
+        this.countryCode = pCountryCode;
     }
 
     public String getName() {
@@ -50,11 +44,11 @@ public class Competitor {
         this.name = name;
     }
 
-    public boolean isGender() {
+    public String isGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

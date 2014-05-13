@@ -18,11 +18,15 @@ import javax.sql.RowSet;
 public interface IndividualDAO {
     
     // Create new event
-    public int insertIndividual(String lastName1, String lastName2, Date dateOfBirth, String occupation, String city, int age, int competitorId,
-            int countryId, String name, boolean gender, String trainer, boolean type, int lodgingId);
+    public int insertIndividual(String lastName1, String lastName2, Date dateOfBirth, String occupation, String city,
+            String countryCode, String name, String gender, String trainer, boolean type, int lodgingId);
     
     //Update an event
     public boolean updateIndividual();
+    
+    //Asociate individuals with teams
+    public int associateCompetitor(int individualID,int teamID);
+    
     
     //Remove an event
     public int deleteIndividual(int individualID);

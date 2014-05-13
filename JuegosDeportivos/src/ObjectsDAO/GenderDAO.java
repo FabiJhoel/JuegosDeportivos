@@ -6,14 +6,14 @@
 
 package ObjectsDAO;
 
+import java.util.Collection;
+
 /**
  *
  * @author Martinez
  */
-public interface CompetitorDAO {
+public interface GenderDAO {
+    public String getCodeGender(String pGender);
     
-    //Create new Competitor
-    public int insertCompetitor(String pCountryCode, String pName,String pGender, String pTrainer,
-            boolean pType, int pLodgingId);
-    
+    public Collection selectAllGenders();
 }

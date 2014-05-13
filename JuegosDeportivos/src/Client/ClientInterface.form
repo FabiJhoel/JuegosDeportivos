@@ -1111,11 +1111,6 @@
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="label33" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="ComboBoxMetric1" min="-2" pref="143" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="label37" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="label38" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1123,13 +1118,13 @@
                                           </Group>
                                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="TextFieldName3" min="-2" pref="172" max="-2" attributes="0"/>
-                                              <Component id="TextFieldName2" min="-2" pref="172" max="-2" attributes="0"/>
-                                              <Component id="DateChooserStart1" min="-2" pref="143" max="-2" attributes="0"/>
+                                              <Component id="TextFieldLastName2" min="-2" pref="172" max="-2" attributes="0"/>
+                                              <Component id="TextFieldLastName1" min="-2" pref="172" max="-2" attributes="0"/>
+                                              <Component id="DateChooserDateOfBirth" min="-2" pref="143" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                          <Component id="ButtonInsert1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnInsertIndividual" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="label27" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1140,19 +1135,19 @@
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                                                      <Component id="TextFieldName1" min="-2" pref="172" max="-2" attributes="0"/>
+                                                      <Component id="TextFieldNameIndividual" min="-2" pref="172" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" attributes="0">
-                                                      <Component id="ComboBoxMode1" min="-2" pref="91" max="-2" attributes="0"/>
+                                                      <Component id="ComboBoxCountryIndividual" min="-2" pref="91" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="label29" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="ComboBoxGender1" min="-2" pref="82" max="-2" attributes="0"/>
+                                                      <Component id="ComboBoxGenderIndividual" min="-2" pref="82" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Component id="TextFieldName4" min="-2" pref="172" max="-2" attributes="0"/>
-                                                  <Component id="TextFieldName5" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
-                                                  <Component id="ComboBoxInstallation1" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
-                                                  <Component id="TextFieldName6" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
+                                                  <Component id="TextFieldCityIndividual" min="-2" pref="172" max="-2" attributes="0"/>
+                                                  <Component id="TextFieldTrainerIndividual" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
+                                                  <Component id="ComboBoxLodgingIdIndividual" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
+                                                  <Component id="TextFieldIndividualOcuppation" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -1174,15 +1169,15 @@
                                   <Component id="label37" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="TextFieldName1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TextFieldNameIndividual" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="TextFieldName2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TextFieldLastName1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="label38" min="-2" max="-2" attributes="0"/>
-                              <Component id="TextFieldName3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TextFieldLastName2" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -1191,43 +1186,38 @@
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="DateChooserStart1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DateChooserDateOfBirth" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="ComboBoxMode1" min="-2" max="-2" attributes="0"/>
+                              <Component id="ComboBoxCountryIndividual" min="-2" max="-2" attributes="0"/>
                               <Component id="label28" min="-2" max="-2" attributes="0"/>
-                              <Component id="ComboBoxGender1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="ComboBoxGenderIndividual" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="label29" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="TextFieldName4" min="-2" max="-2" attributes="0"/>
+                              <Component id="TextFieldCityIndividual" min="-2" max="-2" attributes="0"/>
                               <Component id="label39" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="label40" min="-2" max="-2" attributes="0"/>
-                              <Component id="TextFieldName6" min="-2" max="-2" attributes="0"/>
+                              <Component id="TextFieldIndividualOcuppation" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="label41" min="-2" max="-2" attributes="0"/>
-                              <Component id="TextFieldName5" min="-2" max="-2" attributes="0"/>
+                              <Component id="TextFieldTrainerIndividual" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="label30" min="-2" max="-2" attributes="0"/>
-                              <Component id="ComboBoxInstallation1" min="-2" max="-2" attributes="0"/>
+                              <Component id="ComboBoxLodgingIdIndividual" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="label33" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="ComboBoxMetric1" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="ButtonInsert1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                          <Component id="btnInsertIndividual" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1242,7 +1232,7 @@
                     <Property name="text" type="java.lang.String" value="Nombre"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="TextFieldName1">
+                <Component class="javax.swing.JTextField" name="TextFieldNameIndividual">
                 </Component>
                 <Component class="java.awt.Label" name="label28">
                   <Properties>
@@ -1252,14 +1242,8 @@
                     <Property name="text" type="java.lang.String" value="Pais:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="ComboBoxMode1">
+                <Component class="javax.swing.JComboBox" name="ComboBoxCountryIndividual">
                   <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="Individual"/>
-                        <StringItem index="1" value="Equipo"/>
-                      </StringArray>
-                    </Property>
                     <Property name="selectedIndex" type="int" value="-1"/>
                   </Properties>
                 </Component>
@@ -1271,16 +1255,16 @@
                     <Property name="text" type="java.lang.String" value="Genero:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="ComboBoxGender1">
+                <Component class="javax.swing.JComboBox" name="ComboBoxGenderIndividual">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="Femenino"/>
-                        <StringItem index="1" value="Masculino"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                     <Property name="selectedIndex" type="int" value="-1"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ComboBoxGenderIndividualActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="java.awt.Label" name="label30">
                   <Properties>
@@ -1290,7 +1274,7 @@
                     <Property name="text" type="java.lang.String" value="Alojamiento:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="ComboBoxInstallation1">
+                <Component class="javax.swing.JComboBox" name="ComboBoxLodgingIdIndividual">
                 </Component>
                 <Component class="java.awt.Label" name="label31">
                   <Properties>
@@ -1300,24 +1284,14 @@
                     <Property name="text" type="java.lang.String" value="Fecha de Nacimiento"/>
                   </Properties>
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="DateChooserStart1">
+                <Component class="com.toedter.calendar.JDateChooser" name="DateChooserDateOfBirth">
                 </Component>
-                <Component class="java.awt.Label" name="label33">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Tipo:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="ComboBoxMetric1">
-                </Component>
-                <Component class="javax.swing.JButton" name="ButtonInsert1">
+                <Component class="javax.swing.JButton" name="btnInsertIndividual">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Aceptar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonInsert1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInsertIndividualActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="java.awt.Label" name="label37">
@@ -1336,9 +1310,9 @@
                     <Property name="text" type="java.lang.String" value="Segundo Apellido"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="TextFieldName2">
+                <Component class="javax.swing.JTextField" name="TextFieldLastName1">
                 </Component>
-                <Component class="javax.swing.JTextField" name="TextFieldName3">
+                <Component class="javax.swing.JTextField" name="TextFieldLastName2">
                 </Component>
                 <Component class="java.awt.Label" name="label39">
                   <Properties>
@@ -1348,7 +1322,7 @@
                     <Property name="text" type="java.lang.String" value="Ciudad:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="TextFieldName4">
+                <Component class="javax.swing.JTextField" name="TextFieldCityIndividual">
                 </Component>
                 <Component class="java.awt.Label" name="label40">
                   <Properties>
@@ -1358,7 +1332,7 @@
                     <Property name="text" type="java.lang.String" value="Ocupacion:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="TextFieldName5">
+                <Component class="javax.swing.JTextField" name="TextFieldTrainerIndividual">
                 </Component>
                 <Component class="java.awt.Label" name="label41">
                   <Properties>
@@ -1368,7 +1342,7 @@
                     <Property name="text" type="java.lang.String" value="Entrenador:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="TextFieldName6">
+                <Component class="javax.swing.JTextField" name="TextFieldIndividualOcuppation">
                 </Component>
               </SubComponents>
             </Container>
@@ -1465,12 +1439,12 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="TextFieldName9" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
-                                      <Component id="TextFieldName8" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
+                                      <Component id="TextFieldContactEmail" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
+                                      <Component id="TextFieldContactTel" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="ButtonInsert2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnInsertTeam" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="label36" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1478,27 +1452,26 @@
                                           <Component id="label51" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="label44" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="ComboBoxInstallation2" min="-2" pref="172" max="-2" attributes="0"/>
-                                          <Component id="TextFieldName11" min="-2" pref="172" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="ComboBoxLodgingTeam" min="-2" pref="172" max="-2" attributes="0"/>
+                                                  <Component id="TextFieldTrainerTeam" min="-2" pref="172" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="ComboBoxCountryTeam" min="-2" pref="91" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="label43" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="ComboBoxGenderTeam" min="-2" pref="82" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                                              <Component id="TextFieldName7" min="-2" pref="172" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="ComboBoxMode2" min="-2" pref="91" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="label43" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="ComboBoxGender2" min="-2" pref="82" max="-2" attributes="0"/>
+                                              <Component id="TextFieldNameTeam" min="-2" pref="172" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="label46" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="ComboBoxMetric2" min="-2" pref="143" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -1509,53 +1482,43 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="label36" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="label47" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="TextFieldName7" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="TextFieldName8" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="label36" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="label48" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="TextFieldName9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="32" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="ComboBoxMode2" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="label42" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ComboBoxGender2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="label43" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="label51" min="-2" max="-2" attributes="0"/>
-                                      <Component id="TextFieldName11" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="label44" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ComboBoxInstallation2" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                  <Component id="label46" min="-2" max="-2" attributes="0"/>
+                                  <Component id="label47" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="ComboBoxMetric2" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="TextFieldNameTeam" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="TextFieldContactTel" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                          <Component id="ButtonInsert2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="label48" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="TextFieldContactEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="32" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="ComboBoxCountryTeam" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="label42" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="ComboBoxGenderTeam" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="label43" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="label51" min="-2" max="-2" attributes="0"/>
+                              <Component id="TextFieldTrainerTeam" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="label44" min="-2" max="-2" attributes="0"/>
+                              <Component id="ComboBoxLodgingTeam" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
+                          <Component id="btnInsertTeam" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1570,7 +1533,7 @@
                     <Property name="text" type="java.lang.String" value="Nombre"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="TextFieldName7">
+                <Component class="javax.swing.JTextField" name="TextFieldNameTeam">
                 </Component>
                 <Component class="java.awt.Label" name="label42">
                   <Properties>
@@ -1580,13 +1543,10 @@
                     <Property name="text" type="java.lang.String" value="Pais:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="ComboBoxMode2">
+                <Component class="javax.swing.JComboBox" name="ComboBoxCountryTeam">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="Individual"/>
-                        <StringItem index="1" value="Equipo"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                     <Property name="selectedIndex" type="int" value="-1"/>
                   </Properties>
@@ -1599,13 +1559,10 @@
                     <Property name="text" type="java.lang.String" value="Genero:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="ComboBoxGender2">
+                <Component class="javax.swing.JComboBox" name="ComboBoxGenderTeam">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="Femenino"/>
-                        <StringItem index="1" value="Masculino"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                     <Property name="selectedIndex" type="int" value="-1"/>
                   </Properties>
@@ -1618,24 +1575,14 @@
                     <Property name="text" type="java.lang.String" value="Alojamiento:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="ComboBoxInstallation2">
+                <Component class="javax.swing.JComboBox" name="ComboBoxLodgingTeam">
                 </Component>
-                <Component class="java.awt.Label" name="label46">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Tipo:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="ComboBoxMetric2">
-                </Component>
-                <Component class="javax.swing.JButton" name="ButtonInsert2">
+                <Component class="javax.swing.JButton" name="btnInsertTeam">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Aceptar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonInsert2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInsertTeamActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="java.awt.Label" name="label47">
@@ -1654,11 +1601,11 @@
                     <Property name="text" type="java.lang.String" value="Email Contacto:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="TextFieldName8">
+                <Component class="javax.swing.JTextField" name="TextFieldContactTel">
                 </Component>
-                <Component class="javax.swing.JTextField" name="TextFieldName9">
+                <Component class="javax.swing.JTextField" name="TextFieldContactEmail">
                 </Component>
-                <Component class="javax.swing.JTextField" name="TextFieldName11">
+                <Component class="javax.swing.JTextField" name="TextFieldTrainerTeam">
                 </Component>
                 <Component class="java.awt.Label" name="label51">
                   <Properties>
@@ -1728,7 +1675,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="ButtonDelete1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnDeleteIndividual" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1742,7 +1689,7 @@
                               <Component id="label58" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="ButtonDelete1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnDeleteIndividual" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -1769,12 +1716,12 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="ButtonDelete1">
+                <Component class="javax.swing.JButton" name="btnDeleteIndividual">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Asociar"/>
+                    <Property name="text" type="java.lang.String" value="Eliminar Individuo"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonDelete1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteIndividualActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -1880,7 +1827,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="ButtonDelete2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAsocciateTeamIndividual" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1899,7 +1846,7 @@
                               <Component id="ComboBoxDeleteEvents4" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="ButtonDelete2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAsocciateTeamIndividual" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="21" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -1926,12 +1873,12 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="ButtonDelete2">
+                <Component class="javax.swing.JButton" name="btnAsocciateTeamIndividual">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Asociar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonDelete2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAsocciateTeamIndividualActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="java.awt.Label" name="label63">
@@ -1980,7 +1927,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="ButtonDelete3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnDeleteTeam" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1994,7 +1941,7 @@
                               <Component id="label59" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="ButtonDelete3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnDeleteTeam" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -2021,12 +1968,12 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="ButtonDelete3">
+                <Component class="javax.swing.JButton" name="btnDeleteTeam">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Asociar"/>
+                    <Property name="text" type="java.lang.String" value="Eliminar Equipo"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonDelete3ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteTeamActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
