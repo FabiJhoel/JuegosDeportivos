@@ -20,9 +20,9 @@ public class Individual extends Competitor{
     private String city;
     private int age;
 
-    public Individual(String lastName1, String lastName2, Date dateOfBirth, String occupation, String city, int age, int competitorId,
-            int countryId, String name, boolean gender, String trainer, boolean type, int lodgingId) {
-        super(competitorId, countryId, name, gender, trainer, type, lodgingId);
+    public Individual(String lastName1, String lastName2, Date dateOfBirth, String occupation, String city,
+            String countryId, String name, String gender, String trainer, boolean type, int lodgingId) {
+        super(countryId, name, gender, trainer, type, lodgingId);
         this.lastName1 = lastName1;
         this.lastName2 = lastName2;
         this.dateOfBirth = dateOfBirth;

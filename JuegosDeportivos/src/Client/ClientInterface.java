@@ -1,17 +1,17 @@
 package Client;
 
 import Factory.*;
-import ObjectsDAO.*;
 import Objects.*;
-import java.util.*;
+import ObjectsDAO.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.*;
+import java.util.*;
+import javax.swing.*;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 
 public class ClientInterface extends javax.swing.JFrame {
@@ -33,7 +33,12 @@ public class ClientInterface extends javax.swing.JFrame {
         /******     Load comboBoxes (Events)    ******/
         //Installations
         loadInstallations(ComboBoxInstallation);
-        
+        loadCountries(ComboBoxCountryIndividual);
+        loadCountries(ComboBoxCountryTeam);
+        loadLodgings(ComboBoxLodgingTeam);
+        loadGender(ComboBoxGenderTeam);
+        loadGender(ComboBoxGenderIndividual);
+        loadLodgings(ComboBoxLodgingIdIndividual);
         //Metrics
        loadMetrics(ComboBoxMetric);
        
@@ -124,6 +129,26 @@ public class ClientInterface extends javax.swing.JFrame {
         comboBox.setSelectedIndex(-1); 
     }
     
+    public void loadCountries(JComboBox comboBox){
+        Collection<Country> countriesList = new SQLServerCountryDAO().selectAllCountries();
+        for (Country country : countriesList) {
+            comboBox.addItem(country.getCodeCountry());            
+        }
+    }
+    
+    public void loadGender(JComboBox comboBox){
+        Collection<Gender> genderList = new SQLServerGenderDAO().selectAllGenders();
+        for (Gender gender : genderList) {
+            comboBox.addItem(gender.getNameGender());            
+        }
+    }
+    
+    public void loadLodgings(JComboBox comboBox){
+        Collection<Lodging> lodgingList = new SQLServerLodgingDAO().selectAllLodgings();
+        for (Lodging lodging : lodgingList) {
+            comboBox.addItem(lodging.getName());            
+        }
+    }
     
     public void loadInstallations(JComboBox comboBox)
     {
@@ -220,56 +245,52 @@ public class ClientInterface extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         label27 = new java.awt.Label();
-        TextFieldName1 = new javax.swing.JTextField();
+        TextFieldNameIndividual = new javax.swing.JTextField();
         label28 = new java.awt.Label();
-        ComboBoxMode1 = new javax.swing.JComboBox();
+        ComboBoxCountryIndividual = new javax.swing.JComboBox();
         label29 = new java.awt.Label();
-        ComboBoxGender1 = new javax.swing.JComboBox();
+        ComboBoxGenderIndividual = new javax.swing.JComboBox();
         label30 = new java.awt.Label();
-        ComboBoxInstallation1 = new javax.swing.JComboBox();
+        ComboBoxLodgingIdIndividual = new javax.swing.JComboBox();
         label31 = new java.awt.Label();
-        DateChooserStart1 = new com.toedter.calendar.JDateChooser();
-        label33 = new java.awt.Label();
-        ComboBoxMetric1 = new javax.swing.JComboBox();
-        ButtonInsert1 = new javax.swing.JButton();
+        DateChooserDateOfBirth = new com.toedter.calendar.JDateChooser();
+        btnInsertIndividual = new javax.swing.JButton();
         label37 = new java.awt.Label();
         label38 = new java.awt.Label();
-        TextFieldName2 = new javax.swing.JTextField();
-        TextFieldName3 = new javax.swing.JTextField();
+        TextFieldLastName1 = new javax.swing.JTextField();
+        TextFieldLastName2 = new javax.swing.JTextField();
         label39 = new java.awt.Label();
-        TextFieldName4 = new javax.swing.JTextField();
+        TextFieldCityIndividual = new javax.swing.JTextField();
         label40 = new java.awt.Label();
-        TextFieldName5 = new javax.swing.JTextField();
+        TextFieldTrainerIndividual = new javax.swing.JTextField();
         label41 = new java.awt.Label();
-        TextFieldName6 = new javax.swing.JTextField();
+        TextFieldIndividualOcuppation = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
         label2 = new java.awt.Label();
         jPanel15 = new javax.swing.JPanel();
         label35 = new java.awt.Label();
         jPanel16 = new javax.swing.JPanel();
         label36 = new java.awt.Label();
-        TextFieldName7 = new javax.swing.JTextField();
+        TextFieldNameTeam = new javax.swing.JTextField();
         label42 = new java.awt.Label();
-        ComboBoxMode2 = new javax.swing.JComboBox();
+        ComboBoxCountryTeam = new javax.swing.JComboBox();
         label43 = new java.awt.Label();
-        ComboBoxGender2 = new javax.swing.JComboBox();
+        ComboBoxGenderTeam = new javax.swing.JComboBox();
         label44 = new java.awt.Label();
-        ComboBoxInstallation2 = new javax.swing.JComboBox();
-        label46 = new java.awt.Label();
-        ComboBoxMetric2 = new javax.swing.JComboBox();
-        ButtonInsert2 = new javax.swing.JButton();
+        ComboBoxLodgingTeam = new javax.swing.JComboBox();
+        btnInsertTeam = new javax.swing.JButton();
         label47 = new java.awt.Label();
         label48 = new java.awt.Label();
-        TextFieldName8 = new javax.swing.JTextField();
-        TextFieldName9 = new javax.swing.JTextField();
-        TextFieldName11 = new javax.swing.JTextField();
+        TextFieldContactTel = new javax.swing.JTextField();
+        TextFieldContactEmail = new javax.swing.JTextField();
+        TextFieldTrainerTeam = new javax.swing.JTextField();
         label51 = new java.awt.Label();
         jPanel17 = new javax.swing.JPanel();
         label45 = new java.awt.Label();
         jPanel19 = new javax.swing.JPanel();
         label58 = new java.awt.Label();
         ComboBoxDeleteEvents1 = new javax.swing.JComboBox();
-        ButtonDelete1 = new javax.swing.JButton();
+        btnDeleteIndividual = new javax.swing.JButton();
         jPanel20 = new javax.swing.JPanel();
         label60 = new java.awt.Label();
         jPanel21 = new javax.swing.JPanel();
@@ -277,13 +298,13 @@ public class ClientInterface extends javax.swing.JFrame {
         jPanel22 = new javax.swing.JPanel();
         label62 = new java.awt.Label();
         ComboBoxDeleteEvents3 = new javax.swing.JComboBox();
-        ButtonDelete2 = new javax.swing.JButton();
+        btnAsocciateTeamIndividual = new javax.swing.JButton();
         label63 = new java.awt.Label();
         ComboBoxDeleteEvents4 = new javax.swing.JComboBox();
         jPanel23 = new javax.swing.JPanel();
         label59 = new java.awt.Label();
         ComboBoxDeleteEvents2 = new javax.swing.JComboBox();
-        ButtonDelete3 = new javax.swing.JButton();
+        btnDeleteTeam = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -819,14 +840,17 @@ public class ClientInterface extends javax.swing.JFrame {
         label28.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         label28.setText("Pais:");
 
-        ComboBoxMode1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Individual", "Equipo" }));
-        ComboBoxMode1.setSelectedIndex(-1);
+        ComboBoxCountryIndividual.setSelectedIndex(-1);
 
         label29.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         label29.setText("Genero:");
 
-        ComboBoxGender1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Femenino", "Masculino" }));
-        ComboBoxGender1.setSelectedIndex(-1);
+        ComboBoxGenderIndividual.setSelectedIndex(-1);
+        ComboBoxGenderIndividual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxGenderIndividualActionPerformed(evt);
+            }
+        });
 
         label30.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         label30.setText("Alojamiento:");
@@ -834,13 +858,10 @@ public class ClientInterface extends javax.swing.JFrame {
         label31.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         label31.setText("Fecha de Nacimiento");
 
-        label33.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        label33.setText("Tipo:");
-
-        ButtonInsert1.setText("Aceptar");
-        ButtonInsert1.addActionListener(new java.awt.event.ActionListener() {
+        btnInsertIndividual.setText("Aceptar");
+        btnInsertIndividual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonInsert1ActionPerformed(evt);
+                btnInsertIndividualActionPerformed(evt);
             }
         });
 
@@ -875,21 +896,17 @@ public class ClientInterface extends javax.swing.JFrame {
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(label33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ComboBoxMetric1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(label37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(label38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(label31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(5, 5, 5)
                                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TextFieldName3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TextFieldName2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(DateChooserStart1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(TextFieldLastName2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TextFieldLastName1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(DateChooserDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(ButtonInsert1)
+                                .addComponent(btnInsertIndividual)
                                 .addGroup(jPanel11Layout.createSequentialGroup()
                                     .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(label27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -899,17 +916,17 @@ public class ClientInterface extends javax.swing.JFrame {
                                     .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel11Layout.createSequentialGroup()
                                             .addGap(51, 51, 51)
-                                            .addComponent(TextFieldName1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(TextFieldNameIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel11Layout.createSequentialGroup()
-                                            .addComponent(ComboBoxMode1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(ComboBoxCountryIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(label29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(ComboBoxGender1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(TextFieldName4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(TextFieldName5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(ComboBoxInstallation1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(TextFieldName6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(ComboBoxGenderIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(TextFieldCityIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(TextFieldTrainerIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(ComboBoxLodgingIdIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(TextFieldIndividualOcuppation, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap(73, Short.MAX_VALUE))))
         );
         jPanel11Layout.setVerticalGroup(
@@ -922,48 +939,44 @@ public class ClientInterface extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(label37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(TextFieldName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TextFieldNameIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TextFieldName2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TextFieldLastName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextFieldName3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextFieldLastName2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(label31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(DateChooserStart1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(DateChooserDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(17, 17, 17)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ComboBoxMode1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboBoxCountryIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ComboBoxGender1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboBoxGenderIndividual, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TextFieldName4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextFieldCityIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(label40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextFieldName6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextFieldIndividualOcuppation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(label41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextFieldName5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextFieldTrainerIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(label30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ComboBoxInstallation1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(label33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ComboBoxMetric1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addComponent(ButtonInsert1)
+                    .addComponent(ComboBoxLodgingIdIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(76, 76, 76)
+                .addComponent(btnInsertIndividual)
                 .addGap(118, 118, 118))
         );
 
@@ -1018,25 +1031,20 @@ public class ClientInterface extends javax.swing.JFrame {
         label42.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         label42.setText("Pais:");
 
-        ComboBoxMode2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Individual", "Equipo" }));
-        ComboBoxMode2.setSelectedIndex(-1);
+        ComboBoxCountryTeam.setSelectedIndex(-1);
 
         label43.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         label43.setText("Genero:");
 
-        ComboBoxGender2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Femenino", "Masculino" }));
-        ComboBoxGender2.setSelectedIndex(-1);
+        ComboBoxGenderTeam.setSelectedIndex(-1);
 
         label44.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         label44.setText("Alojamiento:");
 
-        label46.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        label46.setText("Tipo:");
-
-        ButtonInsert2.setText("Aceptar");
-        ButtonInsert2.addActionListener(new java.awt.event.ActionListener() {
+        btnInsertTeam.setText("Aceptar");
+        btnInsertTeam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonInsert2ActionPerformed(evt);
+                btnInsertTeamActionPerformed(evt);
             }
         });
 
@@ -1062,75 +1070,66 @@ public class ClientInterface extends javax.swing.JFrame {
                             .addComponent(label48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(12, 12, 12)
                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TextFieldName9, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextFieldName8, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(TextFieldContactEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TextFieldContactTel, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(ButtonInsert2)
+                        .addComponent(btnInsertTeam)
                         .addGroup(jPanel16Layout.createSequentialGroup()
                             .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(label36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(label42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(label51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(label44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(ComboBoxInstallation2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(TextFieldName11, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel16Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(ComboBoxLodgingTeam, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(TextFieldTrainerTeam, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel16Layout.createSequentialGroup()
+                                            .addComponent(ComboBoxCountryTeam, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(label43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(ComboBoxGenderTeam, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGroup(jPanel16Layout.createSequentialGroup()
                                     .addGap(51, 51, 51)
-                                    .addComponent(TextFieldName7, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel16Layout.createSequentialGroup()
-                                    .addComponent(ComboBoxMode2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(label43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(ComboBoxGender2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel16Layout.createSequentialGroup()
-                            .addComponent(label46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(ComboBoxMetric2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(TextFieldNameTeam, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addComponent(label36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addComponent(TextFieldNameTeam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TextFieldContactTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel16Layout.createSequentialGroup()
-                                .addComponent(label36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(label47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel16Layout.createSequentialGroup()
-                                .addComponent(TextFieldName7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TextFieldName8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextFieldName9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ComboBoxMode2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ComboBoxGender2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label43, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextFieldName11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ComboBoxInstallation2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19)
-                        .addComponent(label46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ComboBoxMetric2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(116, 116, 116)
-                .addComponent(ButtonInsert2)
+                    .addComponent(label48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextFieldContactEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ComboBoxCountryTeam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboBoxGenderTeam, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label43, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextFieldTrainerTeam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboBoxLodgingTeam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(154, 154, 154)
+                .addComponent(btnInsertTeam)
                 .addGap(108, 108, 108))
         );
 
@@ -1163,10 +1162,10 @@ public class ClientInterface extends javax.swing.JFrame {
 
         ComboBoxDeleteEvents1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        ButtonDelete1.setText("Asociar");
-        ButtonDelete1.addActionListener(new java.awt.event.ActionListener() {
+        btnDeleteIndividual.setText("Eliminar Individuo");
+        btnDeleteIndividual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonDelete1ActionPerformed(evt);
+                btnDeleteIndividualActionPerformed(evt);
             }
         });
 
@@ -1182,7 +1181,7 @@ public class ClientInterface extends javax.swing.JFrame {
                 .addContainerGap(139, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ButtonDelete1)
+                .addComponent(btnDeleteIndividual)
                 .addGap(99, 99, 99))
         );
         jPanel19Layout.setVerticalGroup(
@@ -1193,7 +1192,7 @@ public class ClientInterface extends javax.swing.JFrame {
                     .addComponent(ComboBoxDeleteEvents1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label58, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(ButtonDelete1)
+                .addComponent(btnDeleteIndividual)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1247,10 +1246,10 @@ public class ClientInterface extends javax.swing.JFrame {
 
         ComboBoxDeleteEvents3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        ButtonDelete2.setText("Asociar");
-        ButtonDelete2.addActionListener(new java.awt.event.ActionListener() {
+        btnAsocciateTeamIndividual.setText("Asociar");
+        btnAsocciateTeamIndividual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonDelete2ActionPerformed(evt);
+                btnAsocciateTeamIndividualActionPerformed(evt);
             }
         });
 
@@ -1277,7 +1276,7 @@ public class ClientInterface extends javax.swing.JFrame {
                 .addContainerGap(79, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ButtonDelete2)
+                .addComponent(btnAsocciateTeamIndividual)
                 .addGap(100, 100, 100))
         );
         jPanel22Layout.setVerticalGroup(
@@ -1292,7 +1291,7 @@ public class ClientInterface extends javax.swing.JFrame {
                     .addComponent(label63, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ComboBoxDeleteEvents4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addComponent(ButtonDelete2)
+                .addComponent(btnAsocciateTeamIndividual)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -1304,10 +1303,10 @@ public class ClientInterface extends javax.swing.JFrame {
 
         ComboBoxDeleteEvents2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        ButtonDelete3.setText("Asociar");
-        ButtonDelete3.addActionListener(new java.awt.event.ActionListener() {
+        btnDeleteTeam.setText("Eliminar Equipo");
+        btnDeleteTeam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonDelete3ActionPerformed(evt);
+                btnDeleteTeamActionPerformed(evt);
             }
         });
 
@@ -1323,7 +1322,7 @@ public class ClientInterface extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ButtonDelete3)
+                .addComponent(btnDeleteTeam)
                 .addGap(99, 99, 99))
         );
         jPanel23Layout.setVerticalGroup(
@@ -1334,7 +1333,7 @@ public class ClientInterface extends javax.swing.JFrame {
                     .addComponent(ComboBoxDeleteEvents2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label59, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(ButtonDelete3)
+                .addComponent(btnDeleteTeam)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1477,7 +1476,7 @@ public class ClientInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonUpdateActionPerformed
 
     private void ButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonInsertActionPerformed
-
+        
         int inserted = 0;
 
         // Prepare values
@@ -1562,25 +1561,120 @@ public class ClientInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ButtonDeleteActionPerformed
 
-    private void ButtonDelete3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDelete3ActionPerformed
+    private void btnDeleteTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTeamActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonDelete3ActionPerformed
+    }//GEN-LAST:event_btnDeleteTeamActionPerformed
 
-    private void ButtonDelete2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDelete2ActionPerformed
+    private void btnAsocciateTeamIndividualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsocciateTeamIndividualActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonDelete2ActionPerformed
+    }//GEN-LAST:event_btnAsocciateTeamIndividualActionPerformed
 
-    private void ButtonDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDelete1ActionPerformed
+    private void btnDeleteIndividualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteIndividualActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonDelete1ActionPerformed
+    }//GEN-LAST:event_btnDeleteIndividualActionPerformed
 
-    private void ButtonInsert2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonInsert2ActionPerformed
+    private void btnInsertTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertTeamActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonInsert2ActionPerformed
+        //Insertar Equipo
+        int inserted = 0;
 
-    private void ButtonInsert1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonInsert1ActionPerformed
+        // Prepare values
+        String pName, pCountry,pTrainer,pPhoneContact,pEmailContact;
+        boolean pGender = false;
+        int pLodgingId = 0;
+
+        try
+        {
+            pName = TextFieldNameTeam.getText();
+            pTrainer= TextFieldTrainerTeam.getText();
+            pPhoneContact = TextFieldContactTel.getText();
+            pEmailContact = TextFieldContactEmail.getText();
+            
+            String nameGender;
+            nameGender = ComboBoxGenderTeam.getSelectedItem().toString();
+            SQLServerGenderDAO sqlServerGender =  new SQLServerGenderDAO();
+            String codeGender;
+            codeGender = sqlServerGender.getCodeGender(nameGender);
+            
+            String codeCountry = ComboBoxCountryTeam.getSelectedItem().toString();
+
+            pLodgingId = new SQLServerLodgingDAO().findLodgingID(ComboBoxLodgingTeam.getSelectedItem().toString());
+
+            // Insert into Data Base
+            inserted = new SQLServerTeamDAO().insertTeam(pPhoneContact,pEmailContact,
+                   codeCountry, pName, codeGender, pTrainer,true, pLodgingId);
+            
+            if (inserted != 0)
+                JOptionPane.showMessageDialog(null, "Equipo creado correctamente");
+            else
+                JOptionPane.showMessageDialog(null, "Error al crear nuevo Equipo");
+
+        }
+
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Valores inválidos han sido ingresados\n"
+                + "Message: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnInsertTeamActionPerformed
+
+    private void btnInsertIndividualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertIndividualActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonInsert1ActionPerformed
+        //Insertar Competidor individual:
+        int inserted = 0;
+
+        // Prepare values
+        String pName, pLastName1,pLastName2, pCountry, pCity,
+                pOcuppation,pTrainer,pNameLodging;
+        java.util.Date pDateOfBirth;
+        boolean pGender = false;
+        int pLodgingId = 0;
+
+        try
+        {
+            pName = TextFieldNameIndividual.getText();
+            pLastName1= TextFieldLastName1.getText();
+            pLastName2= TextFieldLastName2.getText();
+            pOcuppation= TextFieldIndividualOcuppation.getText();
+            pCity= TextFieldCityIndividual.getText();
+            pTrainer= TextFieldTrainerIndividual.getText();
+            pNameLodging = ComboBoxLodgingIdIndividual.getSelectedItem().toString();
+            pLodgingId = new SQLServerLodgingDAO().findLodgingID(pNameLodging);
+            String nameGender;
+            nameGender = ComboBoxGenderIndividual.getSelectedItem().toString();
+            SQLServerGenderDAO sqlServerGender =  new SQLServerGenderDAO();
+            String codeGender;
+            codeGender = sqlServerGender.getCodeGender(nameGender);
+            
+            String codeCountry = ComboBoxCountryIndividual.getSelectedItem().toString();
+            
+            
+
+            pDateOfBirth = DateChooserDateOfBirth.getDate();
+    
+            int pLodgingID = new SQLServerLodgingDAO().findLodgingID(ComboBoxLodgingIdIndividual.getSelectedItem().toString());
+
+            // Insert into Data Base
+            inserted = new SQLServerIndividualDAO().insertIndividual(pLastName1, pLastName2, pDateOfBirth, pOcuppation, pCity,
+                   codeCountry, pName, codeGender, pTrainer,false, pLodgingId);
+            
+            if (inserted != 0)
+                JOptionPane.showMessageDialog(null, "Individuo creado correctamente");
+            else
+                JOptionPane.showMessageDialog(null, "Error al crear nuevo Individuo");
+
+        }
+
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Valores inválidos han sido ingresados\n"
+                + "Message: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnInsertIndividualActionPerformed
+
+    private void ComboBoxGenderIndividualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxGenderIndividualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBoxGenderIndividualActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1620,14 +1714,11 @@ public class ClientInterface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonDelete;
-    private javax.swing.JButton ButtonDelete1;
-    private javax.swing.JButton ButtonDelete2;
-    private javax.swing.JButton ButtonDelete3;
     private javax.swing.JButton ButtonInsert;
-    private javax.swing.JButton ButtonInsert1;
-    private javax.swing.JButton ButtonInsert2;
     private javax.swing.JButton ButtonRefresh;
     private javax.swing.JButton ButtonUpdate;
+    private javax.swing.JComboBox ComboBoxCountryIndividual;
+    private javax.swing.JComboBox ComboBoxCountryTeam;
     private javax.swing.JComboBox ComboBoxDeleteEvents;
     private javax.swing.JComboBox ComboBoxDeleteEvents1;
     private javax.swing.JComboBox ComboBoxDeleteEvents2;
@@ -1635,26 +1726,28 @@ public class ClientInterface extends javax.swing.JFrame {
     private javax.swing.JComboBox ComboBoxDeleteEvents4;
     private javax.swing.JComboBox ComboBoxEvents;
     private javax.swing.JComboBox ComboBoxGender;
-    private javax.swing.JComboBox ComboBoxGender1;
-    private javax.swing.JComboBox ComboBoxGender2;
+    private javax.swing.JComboBox ComboBoxGenderIndividual;
+    private javax.swing.JComboBox ComboBoxGenderTeam;
     private javax.swing.JComboBox ComboBoxGenderUP;
     private javax.swing.JComboBox ComboBoxInstallation;
-    private javax.swing.JComboBox ComboBoxInstallation1;
-    private javax.swing.JComboBox ComboBoxInstallation2;
     private javax.swing.JComboBox ComboBoxInstallationUP;
+    private javax.swing.JComboBox ComboBoxLodgingIdIndividual;
+    private javax.swing.JComboBox ComboBoxLodgingTeam;
     private javax.swing.JComboBox ComboBoxMetric;
-    private javax.swing.JComboBox ComboBoxMetric1;
-    private javax.swing.JComboBox ComboBoxMetric2;
     private javax.swing.JComboBox ComboBoxMetricUP;
     private javax.swing.JComboBox ComboBoxMode;
-    private javax.swing.JComboBox ComboBoxMode1;
-    private javax.swing.JComboBox ComboBoxMode2;
     private javax.swing.JComboBox ComboBoxModeUP;
+    private com.toedter.calendar.JDateChooser DateChooserDateOfBirth;
     private com.toedter.calendar.JDateChooser DateChooserEnd;
     private com.toedter.calendar.JDateChooser DateChooserEndUP;
     private com.toedter.calendar.JDateChooser DateChooserStart;
-    private com.toedter.calendar.JDateChooser DateChooserStart1;
     private com.toedter.calendar.JDateChooser DateChooserStartUP;
+    private javax.swing.JTextField TextFieldCityIndividual;
+    private javax.swing.JTextField TextFieldContactEmail;
+    private javax.swing.JTextField TextFieldContactTel;
+    private javax.swing.JTextField TextFieldIndividualOcuppation;
+    private javax.swing.JTextField TextFieldLastName1;
+    private javax.swing.JTextField TextFieldLastName2;
     private javax.swing.JTextField TextFieldMaxCapacity;
     private javax.swing.JTextField TextFieldMaxCapacityUP;
     private javax.swing.JTextField TextFieldMaxRange;
@@ -1662,17 +1755,16 @@ public class ClientInterface extends javax.swing.JFrame {
     private javax.swing.JTextField TextFieldMinRange;
     private javax.swing.JTextField TextFieldMinRangeUP;
     private javax.swing.JTextField TextFieldName;
-    private javax.swing.JTextField TextFieldName1;
-    private javax.swing.JTextField TextFieldName11;
-    private javax.swing.JTextField TextFieldName2;
-    private javax.swing.JTextField TextFieldName3;
-    private javax.swing.JTextField TextFieldName4;
-    private javax.swing.JTextField TextFieldName5;
-    private javax.swing.JTextField TextFieldName6;
-    private javax.swing.JTextField TextFieldName7;
-    private javax.swing.JTextField TextFieldName8;
-    private javax.swing.JTextField TextFieldName9;
+    private javax.swing.JTextField TextFieldNameIndividual;
+    private javax.swing.JTextField TextFieldNameTeam;
     private javax.swing.JTextField TextFieldNameUP;
+    private javax.swing.JTextField TextFieldTrainerIndividual;
+    private javax.swing.JTextField TextFieldTrainerTeam;
+    private javax.swing.JButton btnAsocciateTeamIndividual;
+    private javax.swing.JButton btnDeleteIndividual;
+    private javax.swing.JButton btnDeleteTeam;
+    private javax.swing.JButton btnInsertIndividual;
+    private javax.swing.JButton btnInsertTeam;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -1719,7 +1811,6 @@ public class ClientInterface extends javax.swing.JFrame {
     private java.awt.Label label3;
     private java.awt.Label label30;
     private java.awt.Label label31;
-    private java.awt.Label label33;
     private java.awt.Label label35;
     private java.awt.Label label36;
     private java.awt.Label label37;
@@ -1732,7 +1823,6 @@ public class ClientInterface extends javax.swing.JFrame {
     private java.awt.Label label43;
     private java.awt.Label label44;
     private java.awt.Label label45;
-    private java.awt.Label label46;
     private java.awt.Label label47;
     private java.awt.Label label48;
     private java.awt.Label label5;

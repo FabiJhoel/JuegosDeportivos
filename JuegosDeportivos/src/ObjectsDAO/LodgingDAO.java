@@ -6,11 +6,14 @@
 
 package ObjectsDAO;
 
+import java.util.Collection;
+
 /**
  *
  * @author Martinez
  */
-public interface AssociateCompetitorDAO {
-    public int associateCompetitor(int individualID,int teamID);
-    
+public interface LodgingDAO {
+    // Select all info from table
+    public Collection selectAllLodgings();
+    public int findLodgingID(String pName);
 }
